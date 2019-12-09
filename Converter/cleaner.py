@@ -8,6 +8,57 @@ def clean(text):
     words = [word for word in words if word not in common_words and word not in punct]
     text = ' '.join(word for word in words)
     return text
+
 def filter(text):
-    
-    return text
+    text = text.strip()
+    # text = "".join([s for s in text.splitlines(True) if s.strip("\r\n") and s.strip()])
+    data = ""
+    for s in text.splitlines():
+        s = s.strip()
+        if s.strip("\r\n"):
+            data = data + s + "\n"
+    return data
+
+# Driver
+data = """
+        asldkfjalsjfasd
+        sdaf
+
+
+
+        sadfa
+           dfssd
+           a
+           a
+
+        sdfs
+        ff
+          asdfa
+          sd
+        sd
+
+
+
+
+
+
+
+
+        sdsd
+
+
+
+
+
+
+        sdsds
+        df
+        sdf
+
+
+
+
+        gfjhgj
+
+        """
+print(filter(data))
