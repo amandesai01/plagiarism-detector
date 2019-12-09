@@ -1,5 +1,5 @@
 import docxpy
-import cleaner
+from . import cleaner
 
 def grab(file_path):
     text = docxpy.process(file_path)
