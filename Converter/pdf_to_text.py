@@ -1,8 +1,6 @@
 import PyPDF2
 import textract
-
-from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
+import cleaner
 
 def grab(file_path):
     pdf_file = open(file_path,'rb')
@@ -22,7 +20,10 @@ def grab(file_path):
     else:
         text = textract.process(file_path,method='tesseract',language='eng')
 
-    print(text)
+    # text = cleaner.clean(text)
+
+
+    return(text)
 
 
 file1 = input()
