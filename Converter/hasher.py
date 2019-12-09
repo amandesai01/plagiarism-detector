@@ -8,6 +8,14 @@ def hash1(text_array):
 
     return hashed_list
 
+def Manage(fileSet):
+    hash_list=[]
+    for t in fileSet:
+        temp_list = hash1(t)
+        hash_list.append(temp_list)
+    return hash_list
+
+
 #driver
 strr = []
 n = int(input())
