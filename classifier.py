@@ -1,5 +1,17 @@
 import Converter
+<<<<<<< HEAD
 import Separator
+=======
+
+def getTextArray(text):
+    text = Converter.cleaner.filter(text)
+    text = Converter.differ.difference(text)
+    textarray = Converter.groupify.group(text)
+
+def process(text):
+    textarray = getTextArray(text)
+    hash_val = Converter.hasher.hash(textarray)
+>>>>>>> 84229b277b4ee550dddf295e02246f92cf622442
 
 def classify(name):
     textarray = []
