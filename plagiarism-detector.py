@@ -1,6 +1,6 @@
 import os
 import classifier
-import Converter
+from Converter import differ, hasher
 
 path = input()
 pathToTemplate = input()
@@ -9,10 +9,16 @@ for r, d, f in os.walk(path):
     for file in f:
         files.append(os.path.join(r, file))
 
-template = classifier.classify()
+template = classifier.classify(pathToTemplate)
 fileSet = []
 for f in files:
+    print(f)
     fileTextArray = classifier.classify(f)
-    fileSet.append(Converter.differ.difference(template, file))
+    fileSet.append(differ.difference(template, file))
 
-FinalHash = Converter.hasher.Manager(fileSet)
+FinalHash = hasher.Manager(fileSet)
+for i in FinalHash:
+    filetoWrite = open('HashValues.txt', 'w')
+    for j in i:
+        filetoWrite.write(str(j) + "\n")
+    filetoWrite.write("\n")

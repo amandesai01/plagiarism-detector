@@ -1,6 +1,6 @@
 import PyPDF2
 import textract
-import cleaner
+from . import cleaner
 
 def grab(file_path):
     pdf_file = open(file_path,'rb')
@@ -26,5 +26,3 @@ def grab(file_path):
     return(text)
 
 
-file1 = input()
-grab(file1)

@@ -13,8 +13,8 @@ def group(text):
     groups.append(message)
     return groups
 
-inx = input()
-ls = group(inx)
-
-for x in ls:
-    print(x)
+# inx = input()
+# ls = group(inx)
+#
+# for x in ls:
+#     print(x)

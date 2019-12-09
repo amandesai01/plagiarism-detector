@@ -8,7 +8,7 @@ def hash1(text_array):
 
     return hashed_list
 
-def Manage(fileSet):
+def Manager(fileSet):
     hash_list=[]
     for t in fileSet:
         temp_list = hash1(t)
@@ -17,14 +17,14 @@ def Manage(fileSet):
 
 
 #driver
-strr = []
-n = int(input())
-
-for i in range(0,n):
-    x = input()
-    strr.append(x)
-
-hashed_list = hash1(strr)
-for hash_words in hashed_list:
-    print(hash_words)
+# strr = []
+# n = int(input())
+#
+# for i in range(0,n):
+#     x = input()
+#     strr.append(x)
+#
+# hashed_list = hash1(strr)
+# for hash_words in hashed_list:
+#     print(hash_words)
 

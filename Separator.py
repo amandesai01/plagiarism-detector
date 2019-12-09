@@ -1,7 +1,7 @@
-import Converter
+from Converter import groupify, cleaner
 def process(text):
-    text = Converter.cleaner.filter(text)
-    textarray = Converter.groupify.group(text)
+    text = cleaner.filter(text)
+    textarray = groupify.group(text)
     return textarray
 
 # def process(text):

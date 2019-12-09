@@ -1,5 +1,5 @@
 def difference(template,file):
-    template = template.splitlines()
+    # template = template.splitlines()
     file = file.splitlines()
     new_diff=""
     for f_line in file:
@@ -7,23 +7,6 @@ def difference(template,file):
             new_diff+=f_line+"\n"
 
     return new_diff
-
-
-file ="""
-       kjsce
-       talha
-       djsce
-       aman
-       vjti
-      """
-
-template ="""
-       kjsce
-       djsce
-       vjti
-      """
-
-print(difference(template,file))
 
 
 
