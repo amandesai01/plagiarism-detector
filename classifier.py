@@ -1,9 +1,12 @@
 import Converter
 
-def process(text):
+def getTextArray(text):
     text = Converter.cleaner.filter(text)
     textarray = Converter.groupify.group(text)
-    text
+
+def process(text):
+    textarray = getTextArray(text)
+    #template difference
     hash_val = Converter.hasher.hash(textarray)
 
 def classify(name):
