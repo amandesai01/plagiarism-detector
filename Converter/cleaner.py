@@ -8,3 +8,5 @@ def clean(text):
     words = [word for word in words if word not in common_words and word not in punct]
     text = ' '.join(word for word in words)
     return text
+def filter(text):
+    return text

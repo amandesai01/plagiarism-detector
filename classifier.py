@@ -1,15 +1,16 @@
-import Converter.pdf_to_text
-import hasher
-import groupify
+import Converter
+
+def process(text):
+    text = Converter.cleaner.filter(text)
+    textarray = Converter.groupify.group(text)
+    hash_val = Converter.hasher.hash(textarray)
 
 def classify(name):
     if ".pdf" in name:
-       text =  Converter.pdf_to_text.grab(name)
-       text = groupify.group(text)
-       hash_val = hasher.hash(text)
+       process(Converter.pdf_to_text.grab(name))
     elif ".docx" in name:
-        Converter.docx_to_text.grab(name)
+        process(Converter.docx_to_text.grab(name))
     elif ".doc" in name:
-        Converter.doc_to_text.grab(name)
+        process(Converter.doc_to_text.grab(name))
     elif ".txt" in name:
-        Converter.doc_to_text.grab(name)
+        process(Converter.extractText.grab(name))
