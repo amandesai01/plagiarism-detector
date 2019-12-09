@@ -19,6 +19,8 @@ for f in files:
 FinalHash = hasher.Manager(fileSet)
 for i in FinalHash:
     filetoWrite = open('HashValues.txt', 'w')
+    # write name
+    # append that name
     for j in i:
         filetoWrite.write(str(j) + "\n")
     filetoWrite.write("\n")
