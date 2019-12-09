@@ -4,7 +4,7 @@ def group(text):
     count = 0
     message = ""
     for sentence in words:
-        if count % 3 == 0:
+        if count % 1 == 0:
             count = 0
             groups.append(message)
             message = ""
