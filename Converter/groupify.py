@@ -5,17 +5,12 @@ def group(text):
     count = 0
     message = ""
     for sentence in words:
-        if count % 3 == 0:
+        if count % 1 == 0:
             count = 0
-            groups.append(message)
+            groups.append(clean(message))
             message = ""
         message = message + sentence + " "
         count = count +1
-    groups.append(message)
+    groups.append(clean(message))
     return groups
 
-# inx = input()
-# ls = group(inx)
-#
-# for x in ls:
-#     print(x)
