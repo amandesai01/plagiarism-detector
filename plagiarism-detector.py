@@ -6,8 +6,9 @@ from Converter.hasher import Manager, HashElement
 import json
 import ntpath
 
-path = input()
-pathToTemplate = input()
+
+path = input("Enter Path to Dir: ")
+pathToTemplate = input("Enter path to Template(Leave Blank if no template): ")
 if pathToTemplate == "":
     pathToTemplate = "template.txt"
 files = []
@@ -43,8 +44,6 @@ for eachfile in HashedFileSet:
     for checkerFile in HashedFileSet:
         if(checkerFile == eachfile):
             continue
-        if checkerFile in checkedStatus:
-            continue
         key = eachfile + '+' + checkerFile
         matchedArray = []
         for eachHashedValue in set(HashedFileSet[eachfile]):
@@ -54,7 +53,8 @@ for eachfile in HashedFileSet:
         if matchedArray:
             endResult[key] = matchedArray
         checkedStatus.append(checkerFile)
-# print(json.dumps(fileRetrievelMap, indent=4))
+print(json.dumps(endResult, indent=4))
+
 
 for eachval in endResult:
     print("\n\n\n***********************Matched***********************")
