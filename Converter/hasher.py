@@ -1,8 +1,9 @@
 import os,hashlib
 
 def HashElement(text):
-    hashval = hashlib.md5(text.encode())
-    return hashval.digest()
+    hashval = hashlib.sha256(text.encode())
+    strOfHashVal = str(hashval.digest()).replace('\\x', '')
+    return strOfHashVal
 
 def hash1(text_array):
     hashed_list = []
