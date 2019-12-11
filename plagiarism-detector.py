@@ -5,7 +5,8 @@ from Converter.differ import difference
 from Converter.hasher import Manager, HashElement
 import json
 import ntpath
-path = "/Users/aman/Documents/GitHub/plagiarism-detector/Sample_Files"
+
+path = input()
 pathToTemplate = ""
 if pathToTemplate == "":
     pathToTemplate = "template.txt"
@@ -43,7 +44,7 @@ for eachfile in HashedFileSet:
         if(checkerFile == eachfile):
             continue
         if checkerFile in checkedStatus:
-            continue 
+            continue
         key = eachfile + '+' + checkerFile
         matchedArray = []
         for eachHashedValue in set(HashedFileSet[eachfile]):

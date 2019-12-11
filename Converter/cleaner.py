@@ -1,8 +1,15 @@
 import string
+from nltk.tokenize import word_tokenize import string
+from nltk.corpus import stopwords
 
 def clean(text):
-    return text.translate(str.maketrans('', '', string.punctuation))
-    
+    words = word_tokenize(text)     return text.translate(str.maketrans('', '', string.punctuation))
+    punct = [',','?','(',')',';',':','[',']','{','}',',']
+    common_words = stopwords.words['english']
+    words = [word for word in words if word not in common_words and word not in punct]
+    text = ' '.join(word for word in words)
+    return text
+
 
 def filter(text):
     text = text.strip()
