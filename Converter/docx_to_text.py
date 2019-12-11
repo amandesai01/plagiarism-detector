@@ -1,7 +1,7 @@
 import docxpy
-from . import cleaner
+from Converter.cleaner import filter
 
 def grab(file_path):
     text = docxpy.process(file_path)
-    text = cleaner.filter(text)
+    text = filter(text)
     return text

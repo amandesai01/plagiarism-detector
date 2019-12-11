@@ -1,6 +1,8 @@
 import os
-import classifier,finder
-from Converter import differ, hasher
+from classifier import classify
+from finder import find
+from Converter.differ import difference
+from Converter.hasher import Manager
 
 path = input()
 pathToTemplate = input()
@@ -9,14 +11,14 @@ for r, d, f in os.walk(path):
     for file in f:
         files.append(os.path.join(r, file))
 
-template = classifier.classify(pathToTemplate)
+template = classify(pathToTemplate)
 fileSet = []
 for f in files:
     print(f)
-    fileTextArray = classifier.classify(f)
-    fileSet.append(differ.difference(template, file))    #stores the text array of the files
+    fileTextArray = classify(f)
+    fileSet.append(difference(template, file))    #stores the text array of the files
 
-FinalHash = hasher.Manager(fileSet)
+FinalHash = Manager(fileSet)
 # for i in FinalHash:
 #     filetoWrite = open('HashValues.txt', 'w')
 #     # write name
@@ -25,7 +27,7 @@ FinalHash = hasher.Manager(fileSet)
 #         filet oWrite.write(str(j) + "\n")
 #     filetoWrite.write("\n")
 
-plagiarism_values = finder.find(FinalHash)
+plagiarism_values = find(FinalHash)
 
 
 for file_list in plagiarism_values:
