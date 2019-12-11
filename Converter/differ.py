@@ -1,10 +1,9 @@
 def difference(template,file):
     # template = template.splitlines()
-    file = file.splitlines()
-    new_diff=""
+    new_diff= []
     for f_line in file:
         if f_line not in set(template):
-            new_diff+=f_line+"\n"
+            new_diff.append(f_line)
 
     return new_diff
 
