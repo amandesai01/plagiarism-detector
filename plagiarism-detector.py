@@ -1,5 +1,5 @@
 import os
-import classifier
+import classifier,finder
 from Converter import differ, hasher
 
 path = input()
@@ -14,7 +14,7 @@ fileSet = []
 for f in files:
     print(f)
     fileTextArray = classifier.classify(f)
-    fileSet.append(differ.difference(template, file))
+    fileSet.append(differ.difference(template, file))    #stores the text array of the files
 
 FinalHash = hasher.Manager(fileSet)
 # for i in FinalHash:
@@ -22,15 +22,13 @@ FinalHash = hasher.Manager(fileSet)
 #     # write name
 #     # append that name
 #     for j in i:
-#         filetoWrite.write(str(j) + "\n")
+#         filet oWrite.write(str(j) + "\n")
 #     filetoWrite.write("\n")
 
-plagiarism_values=[]
-for hash_text in FinalHash:
-    match = 0
-    for compare in FinalHash:
-        for hash_val in hash_text:
-            if hash_val in set(compare):
-                match+=1
-    percentage = match/len(hash_text)
-    plagiarism_values.append(percentage)
+plagiarism_values = finder.find(FinalHash)
+
+
+for file_list in plagiarism_values:
+    for perc in file_list:
+        print(perc)
+
