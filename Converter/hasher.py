@@ -9,10 +9,10 @@ def hash1(text_array):
     return hashed_list
 
 def Manager(fileSet):
-    hash_list= {}
-    for t in fileSet:
-        temp_list = hash1(t)
-        hash_list.append(temp_list)
+    hash_list={}
+    for key,value in fileSet:
+        temp_list = hash1(value)
+        hash_list[key]=temp_list
     return hash_list
 
 

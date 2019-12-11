@@ -22,7 +22,7 @@ for f in files:
 
 print(json.dumps(fileSet, indent=4))
 
-# FinalHash = Manager(fileSet, )
+FinalHash = Manager(fileSet)
 # for i in FinalHash:
 #     filetoWrite = open('HashValues.txt', 'w')
 #     # write name
@@ -31,10 +31,8 @@ print(json.dumps(fileSet, indent=4))
 #         filet oWrite.write(str(j) + "\n")
 # #     filetoWrite.write("\n")
 
-# plagiarism_values = find(FinalHash)
+plagiarism_values = find(FinalHash)
 
 
-# for file_list in plagiarism_values:
-#     for perc in file_list:
-#         print(perc)
+
 
