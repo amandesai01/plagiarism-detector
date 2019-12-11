@@ -4,6 +4,7 @@ from finder import find
 from Converter.differ import difference
 from Converter.hasher import Manager, HashElement
 import json
+import ntpath
 path = "/Users/aman/Documents/GitHub/plagiarism-detector/Sample_Files"
 pathToTemplate = ""
 if pathToTemplate == "":
@@ -17,9 +18,10 @@ template = classify(pathToTemplate)
 fileSet = {}
 fileNameMap = {}
 sentenceHashMap = {}
-
+fileRetrievelMap = {}
 for f in files:
     fileNameMap[f] = HashElement(f)
+    fileRetrievelMap[fileNameMap[f]] = f
     fileTextArray = classify(f)
     fileSet[fileNameMap[f]] = (difference(template, fileTextArray))    #stores the text array of the files
 
@@ -35,17 +37,28 @@ for eachfile in fileSet:
     HashedFileSet[eachfile] = hasharray
 
 endResult = {}
-
+checkedStatus = []
 for eachfile in HashedFileSet:
     for checkerFile in HashedFileSet:
         if(checkerFile == eachfile):
             continue
+        if checkerFile in checkedStatus:
+            continue 
         key = eachfile + '+' + checkerFile
         matchedArray = []
         for eachHashedValue in set(HashedFileSet[eachfile]):
             for checkHashValue in set(HashedFileSet[checkerFile]):
                 if eachHashedValue == checkHashValue:
                     matchedArray.append(eachHashedValue)
-        endResult[key] = matchedArray
+        if matchedArray:
+            endResult[key] = matchedArray
+        checkedStatus.append(checkerFile)
+# print(json.dumps(fileRetrievelMap, indent=4))
 
-print(json.dumps(endResult, indent=4))
+for eachval in endResult:
+    print("\n\n\n***********************Matched***********************")
+    filesMatched = str(eachval).split('+')
+    print(ntpath.basename(fileRetrievelMap[filesMatched[0]]) + " <-> " + ntpath.basename(fileRetrievelMap[filesMatched[1]])+"\n\n")
+    for eachsentence in endResult[eachval]:
+        print( "-> "+ sentenceHashMap[eachsentence])
+    print("***********************End***********************\n\n\n")
