@@ -33,11 +33,6 @@ FinalHash = Manager(fileSet)
 
 plagiarism_values = find(FinalHash)
 
-for file_name,list_of_matches in plagiarism_values:
-    print(file_name)
-    for compare_file_name,hash_perc in list_of_matches:
-        print(compare_file_name + str(hash_perc))
-
 
 
 
