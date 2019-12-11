@@ -7,7 +7,7 @@ import json
 import ntpath
 
 path = input()
-pathToTemplate = ""
+pathToTemplate = input()
 if pathToTemplate == "":
     pathToTemplate = "template.txt"
 files = []
