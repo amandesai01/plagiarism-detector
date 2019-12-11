@@ -1,10 +1,14 @@
 import os,hashlib
 
+def HashElement(text):
+    hashval = hashlib.md5(text.encode())
+    return hashval.digest()
+
 def hash1(text_array):
     hashed_list = []
     for groups in text_array:
-        hash_func = hashlib.md5(groups.encode())
-        hashed_list.append(hash_func.digest())
+        hashed = HashElement(groups)
+        hashed_list.append(hashed)
 
     return hashed_list
 
