@@ -6,6 +6,8 @@ from Converter.hasher import Manager
 
 path = input()
 pathToTemplate = input()
+if pathToTemplate == "":
+    pathToTemplate = "template.txt"
 files = []
 for r, d, f in os.walk(path):
     for file in f:

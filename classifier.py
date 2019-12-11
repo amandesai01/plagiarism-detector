@@ -1,5 +1,5 @@
 from Converter import pdf_to_text,docx_to_text,txt_to_text
-import Separator.process
+from Separator import process
 
 def classify(name):
     textarray = []
