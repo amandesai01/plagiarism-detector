@@ -10,7 +10,6 @@ def find(FinalHash):
 
     #     percentage = match/len(hash_text)
     #     plagiarism_values.append(percentage)
-
     # return plagiarism_values
     plagiarism_values =[]
     for hash_text_file in FinalHash:
@@ -20,7 +19,7 @@ def find(FinalHash):
             for hash_val in FinalHash[hash_text_file]:
                 if hash_val in set(FinalHash[compare_text_file]):
                     match+=1
-            percentage = match//len(FinalHash[compare_text_file])
+            percentage = match
             hash_vals.append((compare_text_file,percentage))
         plagiarism_values.append((hash_text_file,hash_vals))
     return plagiarism_values

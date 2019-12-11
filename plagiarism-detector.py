@@ -2,10 +2,10 @@ import os
 from classifier import classify
 from finder import find
 from Converter.differ import difference
-from Converter.hasher import Manager
+from Converter.hasher import Manager, HashElement
 import json
-path = input()
-pathToTemplate = input()
+path = "/Users/aman/Documents/GitHub/plagiarism-detector/Sample_Files"
+pathToTemplate = ""
 if pathToTemplate == "":
     pathToTemplate = "template.txt"
 files = []
@@ -15,24 +15,37 @@ for r, d, f in os.walk(path):
 
 template = classify(pathToTemplate)
 fileSet = {}
+fileNameMap = {}
+sentenceHashMap = {}
+
 for f in files:
-    print(f)
+    fileNameMap[f] = HashElement(f)
     fileTextArray = classify(f)
-    fileSet[f] = (difference(template, fileTextArray))    #stores the text array of the files
+    fileSet[fileNameMap[f]] = (difference(template, fileTextArray))    #stores the text array of the files
 
-print(json.dumps(fileSet, indent=4))
+for eachfile in fileSet:
+    for eachsentence in fileSet[eachfile]:
+        sentenceHashMap[HashElement(eachsentence)] = eachsentence
 
-FinalHash = Manager(fileSet)
-# for i in FinalHash:
-#     filetoWrite = open('HashValues.txt', 'w')
-#     # write name
-#     # append that name
-#     for j in i:
-#         filet oWrite.write(str(j) + "\n")
-# #     filetoWrite.write("\n")
+HashedFileSet = {}
+for eachfile in fileSet:
+    hasharray = []
+    for eachsentence in fileSet[eachfile]:
+        hasharray.append(HashElement(eachsentence))
+    HashedFileSet[eachfile] = hasharray
 
-plagiarism_values = find(FinalHash)
+endResult = {}
 
+for eachfile in HashedFileSet:
+    for checkerFile in HashedFileSet:
+        if(checkerFile == eachfile):
+            continue
+        key = eachfile + '+' + checkerFile
+        matchedArray = []
+        for eachHashedValue in set(HashedFileSet[eachfile]):
+            for checkHashValue in set(HashedFileSet[checkerFile]):
+                if eachHashedValue == checkHashValue:
+                    matchedArray.append(eachHashedValue)
+        endResult[key] = matchedArray
 
-
-
+print(json.dumps(endResult, indent=4))
