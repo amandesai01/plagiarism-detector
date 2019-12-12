@@ -6,7 +6,7 @@
 ![GitHub issues-closed](https://img.shields.io/github/issues-closed/amandesai01/plagiarism-detector.svg)
 
 
-This Project finds matching sentences across all the files in given directory and finds all matching sentences. It use sha256 hash to hash sentences and maps them into a sentence-hash pool.<br>
+This Project finds matching sentences across all the files in given directory. It use sha256 hash to hash sentences and maps them into a sentence-hash pool.<br>
 ***This Code finds Sentence-Based Plagarism***
 
 ## Usage:
